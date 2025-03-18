@@ -1,0 +1,49 @@
+﻿@model IEnumerable<LeMinhQuy_2280602656_Tuan03.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model != null && Model.Any())
+{
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                    @foreach (var product in Model)
+                    {
+                                <div class="col">
+                                    <div class="card">
+                                        @if (!string.IsNullOrEmpty(product.ImageUrl))
+                                        {
+                                            <img src="@product.ImageUrl" alt="" class="card-img-top" style="max-width=200px; padding: 10px"></img>
+                                        }
+                                        <div class="card-body">
+                                            <h5 class="card-title">@product.Name</h5>
+                                            <p class="card-title" style="color: lightblue">@product.Category?.Name</p>
+                                            <p class="card-text">@product.Description</p>
+                                            <h3 class="card-text" style="color:red">@product.Price</h3>
+                                            <a href="" class="btn btn-primary">Mua ngay</a>
+                                        </div>
+                                    </div>
+                                </div>
+                    }
+                    </div>
+            </div>
+                <div class="col-md-3">
+                        <div class="container bg-primary text-white">
+                            <h5>Social Media</h5>
+                            <ul class="list-unstyled ">
+                                <li><a href="#" class="text-white text-decoration-none">Facebook</a></li>
+                                <li><a href="#" class="text-white text-decoration-none">Twitter</a></li>
+                                <li><a href="#" class="text-white text-decoration-none">Instagram</a></li>
+                                <li><a href="#" class="text-white text-decoration-none">LinkedIn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+}
+else
+{
+        <p>Không có sản phẩm nào!</p>
+}

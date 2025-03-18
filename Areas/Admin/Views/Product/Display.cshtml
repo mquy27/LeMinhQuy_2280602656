@@ -1,0 +1,16 @@
+﻿@model LeMinhQuy_2280602656_Tuan03.Models.Product
+
+@{
+    ViewData["Title"] = "Display";
+	Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+<div>
+	 <h3>Price: @Model.Price</h3>
+	 <p>@Model.Description</p>
+	@if (!string.IsNullOrEmpty(Model.ImageUrl))
+	{
+			<img src="@Model.ImageUrl" alt="Product Image" style="max-width:200px;"/>
+	}
+</div>

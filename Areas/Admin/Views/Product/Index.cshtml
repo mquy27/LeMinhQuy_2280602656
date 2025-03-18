@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LeMinhQuy_2280602656_Tuan03.Models.Product>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+<form asp-area="Admin" asp-action="Add" method="post" enctype="multipart/form-data">
+	<button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+</form>
+<table class="table">
+	 <thead>
+		 <tr>
+			 <th>Name</th>
+			 <th>Price</th>
+			 <th>Description</th>
+			 <th>Category</th>
+			 <th>Images</th>
+			 <th>Actions</th>
+		 </tr>
+	 </thead>
+ <tbody>
+		@foreach (var product in Model)
+		{
+				 <tr>
+					 <td>@product.Name</td>
+					 <td>@product.Price</td>
+					 <td>@product.Description</td>
+					 <td>@product.Category?.Name</td>
+					 <td>
+					@if (!string.IsNullOrEmpty(product.ImageUrl))
+					{
+								<img src="@product.ImageUrl" alt="Product Image" style="max-width:100px;"/>
+					}
+					 </td>
+					 <td>
+						 <a asp-area="Admin" asp-controller="Product" asp-action="Display" asp-route-id="@product.Id" class="btn btn-success">View</a> |
+						 <a asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@product.Id" class="btn btn-warning">Edit</a> |
+						 <a asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
+					 </td>
+				 </tr>
+		}
+ </tbody>
+</table>
